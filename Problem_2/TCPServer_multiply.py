@@ -22,7 +22,7 @@ while True:
     clientIP, clientPort = clientAddress
 
     # Receive a byte string from the connection socket
-    messageBytes = connectionSocket.recv(1024)
+    messageBytes = connectionSocket.recv(2048)
     message = messageBytes.decode("utf-8")
 
 
@@ -39,7 +39,7 @@ while True:
         reply = str(product)
 
     except ValueError:
-        relpy = "Invalid input"
+        reply = "Invalid input"
 
 
     # Send a byte string to the connection socket
