@@ -31,8 +31,8 @@ while True:
 
         reply = str(product)
 
-    except:
-        relpy = "Invalid input"
+    except ValueError:
+        reply = "Invalid input"
     
 
     # Send the product encoded in the UTF-8 format through the socket

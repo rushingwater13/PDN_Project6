@@ -16,12 +16,12 @@ print('The server is ready to receive')
 
 while True:
     
-    # server waits on accept() for incoming requests
-    # a new connection socket is created on return
+    # Server waits on accept() for incoming requests
+    # A new connection socket is created on return
     connectionSocket, clientAddress = welcomeSocket.accept()
     clientIP, clientPort = clientAddress
 
-    # receive a byte string from the connection socket
+    # Receive a byte string from the connection socket
     messageBytes = connectionSocket.recv(1024)
     message = messageBytes.decode("utf-8")
 
@@ -38,14 +38,13 @@ while True:
 
         reply = str(product)
 
-    except:
+    except ValueError:
         relpy = "Invalid input"
 
 
-    # send a byte string to the connection socket
-    connectionSocket.send(reply.encode("utf-8"))
+    # Send a byte string to the connection socket
+    connectionSocket.sendall(reply.encode("utf-8"))
 
-    # close the connection socket to this client
+    # Close the connection socket to this client
     connectionSocket.close()
-
-    # the welcoming socket is still open for new clients
+    # The welcoming socket is still open for new clients
