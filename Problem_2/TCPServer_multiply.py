@@ -24,13 +24,28 @@ while True:
     # receive a byte string from the connection socket
     messageBytes = connectionSocket.recv(1024)
     message = messageBytes.decode("utf-8")
-    print(f'message from {clientIP}:{clientPort} = {message}')
+
+
+    try:
+        elements = message.split(',')
+        numbers = []
+        for element in elements:
+            numbers.append(int(element.strip()))
+
+        product = 1
+        for number in numbers:
+            product = number * product
+
+        reply = str(product)
+
+    except:
+        relpy = "Invalid input"
+
 
     # send a byte string to the connection socket
-    modifiedMessage = message.upper()
-    connectionSocket.send(modifiedMessage.encode("utf-8"))
+    connectionSocket.send(reply.encode("utf-8"))
 
     # close the connection socket to this client
     connectionSocket.close()
-    
+
     # the welcoming socket is still open for new clients
