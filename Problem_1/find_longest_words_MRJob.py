@@ -1,7 +1,7 @@
 from mrjob.job import MRJob
 import re
 
-WORD_RE = re.compile(r"[A-Za-z'-]+")
+WORD_RE = re.compile(r"[A-Za-z']+")
 #WORD_RE = re.compile(r"[\w']+")
 
 
